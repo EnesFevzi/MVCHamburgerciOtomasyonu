@@ -1,0 +1,36 @@
+﻿@model MessageDto
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Mesaj Detayları</h4>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Mesaj Konusu:</strong> @Model.Subject</p>
+                            <p><strong>Mesaj İçeriği:</strong> @Model.MessageDetails</p>
+                            <p><strong>Oluşturan:</strong> @Model.SenderUser.FirstName</p>
+                            <p><strong>Durum:</strong> @(Model.IsDeleted ? "Aktif Değil" : "Aktif")</p>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <a asp-controller="Message" asp-action="InBox" class="btn btn-success">Geri Dön</a>
+                            @{
+                                @if (!User.IsInRole($"{RoleConsts.User}"))
+                                {
+                                    <a asp-controller="Message" asp-action="AdminAnswerToMessage" asp-route-messageId="@Model.MessageID" class="btn btn-secondary">Cevapla</a>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@model MenuSizeAddDto
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Menü Boyutu Yönetimi /</span> Menü Boyutu Ekle
+</h4>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <h5 class="card-header"></h5>
+            <form asp-controller="MenuSize" asp-action="Add" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="card-body">
+                  
+                    <div class="form-group">
+                        <label asp-for="SizeName" id="defaultFormControlInput" class="form-label">Başlık</label>
+                        <input asp-for="SizeName" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
+                        <span asp-validation-for="SizeName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PriceModifier" id="defaultFormControlInput" class="form-label">Fiyat Farkı</label>
+                        <input asp-for="PriceModifier" type="number" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen Fiyat giriniz." aria-describedby="defaultFormControlHelp">
+                        <span asp-validation-for="PriceModifier" class="text-danger"></span>
+                    </div>
+                   
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Kaydet</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

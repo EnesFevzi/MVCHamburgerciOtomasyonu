@@ -1,0 +1,50 @@
+﻿
+<!DOCTYPE html>
+
+<!-- beautify ignore:start -->
+<html lang="en"
+      class="light-style layout-menu-fixed"
+      dir="ltr"
+      data-theme="theme-default"
+      data-assets-path="../assets/"
+      data-template="vertical-menu-template-free">
+
+<partial name="_LayoutPartial/PartialHeader"></partial>
+@* <partial name="Views/_AdminLayoutPartial/PartialHeader"></partial> *@  @*Bu kullanımda viewvs shred içinde olmalı *@
+
+<body>
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+
+                <partial name="_LayoutPartial/PartialAppBrandDemo"></partial>
+
+                <div class="menu-inner-shadow"></div>
+
+                <partial name="_LayoutPartial/PartialSidebar"></partial>
+
+            </aside>
+            <div class="layout-page">
+
+                <partial name="_LayoutPartial/PartialNavbar"></partial>
+
+                <div class="content-wrapper">
+                    <div class="container-xxl flex-grow-1 container-p-y">
+
+                        @RenderBody()
+                    </div>
+
+                    <partial name="_LayoutPartial/PartialFooter"></partial>
+
+                    <div class="content-backdrop fade"></div>
+                </div>
+            </div>
+        </div>
+        <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+
+    <partial name="_LayoutPartial/PartialScript"></partial>
+    @await RenderSectionAsync("Scripts",false);
+    @await Component.InvokeAsync("NToastNotify")
+</body>
+</html>

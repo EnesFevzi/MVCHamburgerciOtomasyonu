@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCHamburgerciOtomasyonu.Web", "MVCHamburgerciOtomasyonu\MVCHamburgerciOtomasyonu.Web.csproj", "{31F0B856-A827-4ABD-BFF0-306E26CA3D48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCHamburgerciOtomasyonu.Entity", "MVCHamburgerciOtomasyonu.Entity\MVCHamburgerciOtomasyonu.Entity.csproj", "{41451B68-2AF5-435C-B1F2-314DDFD2E4F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCHamburgerciOtomasyonu.Core", "MVCHamburgerciOtomasyonu.Core\MVCHamburgerciOtomasyonu.Core.csproj", "{624AE24F-1701-41E7-A88C-5B13C762A10C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCHamburgerciOtomasyonu.DataAccess", "MVCHamburgerciOtomasyonu.DataAccess\MVCHamburgerciOtomasyonu.DataAccess.csproj", "{0DC8BB68-132B-48F5-9ECA-07189A7DF15A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCHamburgerciOtomasyonu.Service", "MVCHamburgerciOtomasyonu.Service\MVCHamburgerciOtomasyonu.Service.csproj", "{03430AA6-2457-4281-92C2-8B38FDD18E10}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31F0B856-A827-4ABD-BFF0-306E26CA3D48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31F0B856-A827-4ABD-BFF0-306E26CA3D48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31F0B856-A827-4ABD-BFF0-306E26CA3D48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31F0B856-A827-4ABD-BFF0-306E26CA3D48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41451B68-2AF5-435C-B1F2-314DDFD2E4F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41451B68-2AF5-435C-B1F2-314DDFD2E4F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41451B68-2AF5-435C-B1F2-314DDFD2E4F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41451B68-2AF5-435C-B1F2-314DDFD2E4F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{624AE24F-1701-41E7-A88C-5B13C762A10C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{624AE24F-1701-41E7-A88C-5B13C762A10C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{624AE24F-1701-41E7-A88C-5B13C762A10C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{624AE24F-1701-41E7-A88C-5B13C762A10C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DC8BB68-132B-48F5-9ECA-07189A7DF15A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DC8BB68-132B-48F5-9ECA-07189A7DF15A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DC8BB68-132B-48F5-9ECA-07189A7DF15A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DC8BB68-132B-48F5-9ECA-07189A7DF15A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03430AA6-2457-4281-92C2-8B38FDD18E10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03430AA6-2457-4281-92C2-8B38FDD18E10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03430AA6-2457-4281-92C2-8B38FDD18E10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03430AA6-2457-4281-92C2-8B38FDD18E10}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3494B11B-8467-449C-8DA4-E49CE1DBB768}
+	EndGlobalSection
+EndGlobal

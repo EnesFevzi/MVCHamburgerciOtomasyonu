@@ -1,0 +1,100 @@
+﻿@model OrderUpdateDto
+
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Sipariş Yönetimi /</span> Sipariş Güncelle
+</h4>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <h5 class="card-header"></h5>
+            <form asp-controller="Order" asp-action="Update" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="card-body">
+                    <input asp-for="OrderID" type="hidden" />
+                    <div class="form-group">
+                        <label asp-for="MenuId">Menüler</label>
+                        <select id="menuList" class="form-control" asp-for="MenuId" asp-items="@(new SelectList(Model.Menus,"MenuID","Name"))"></select>
+                        <span asp-validation-for="MenuId" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="MenuSizeId">Boyutlar</label>
+                        <select id="menuSizeList" class="form-control" asp-for="MenuSizeId" asp-items="@(new SelectList(Model.MenuSizes,"MenuSizeID","SizeName"))"></select>
+                        <span asp-validation-for="MenuSizeId" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="Quantity" id="defaultFormControlInput" class="form-label">Adet</label>
+                        <input id="quantity" asp-for="Quantity" type="number" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
+                        <span asp-validation-for="Quantity" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label text-right">Ekstra Malzemeler:</label>
+                        <div class="form-check">
+                            @foreach (var extra in Model.Extras)
+                            {
+                                <div class="form-check">
+                                    <input type="checkbox" id="extra-@extra.ExtraID" class="form-check-input" name="SelectedExtras" value="@extra.ExtraID" @(Model.SelectedExtras != null && Model.SelectedExtras.Contains(extra.ExtraID) ? "checked" : "")>
+                                    <label for="extra-@extra.ExtraID" class="form-check-label">@extra.Name - @extra.Price</label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <div class="d-flex justify-content-between">
+                        @* <button type="button" class="btn btn-success" onclick="calculatePrice()">Fiyat Hesapla</button> *@
+                        <button type="submit" class="btn btn-primary">Sipariş Güncelle</button>
+                    </div>
+                    <div id="calculatedPrice" class="text-right text-success mt-3">@Model.Price</div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        calculatePrice();
+    });
+
+    $("#menuList, #menuSizeList, input[name='SelectedExtras']").change(function () {
+        calculatePrice();
+    });
+    function calculatePrice() {
+        var orderAddDto = {
+            MenuId: $("#menuList").val(),
+            MenuSizeId: $("#menuSizeList").val(),
+            Quantity: $("#quantity").val(),
+            SelectedExtras: []
+        };
+
+        $("input[name='SelectedExtras']:checked").each(function () {
+            orderAddDto.SelectedExtras.push($(this).val());
+        });
+
+        $.ajax({
+            url: '/Order/CalculateOrderPrice',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(orderAddDto),
+            success: function (response) {
+                var calculatedPrice = response.calculate;
+
+                if (calculatedPrice.hasOwnProperty("calculate")) {
+                    calculatedPrice = calculatedPrice.calculate;
+                }
+                $("#calculatedPrice").text("Hesaplanmış Fiyat: " + calculatedPrice + " ₺");
+            },
+            error: function () {
+                alert("Fiyat hesaplama sırasında bir hata oluştu.");
+            }
+        });
+    }
+
+
+</script>

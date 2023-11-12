@@ -1,0 +1,50 @@
+﻿@model List<MenuDto>
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Çöp Kutusu /</span> Menü
+    </h4>
+
+
+    <div class="card">
+        <div class="table-responsive text-nowrap m-5">
+
+            <table class="table table-bordered" id="portfoliosTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Resim</th>
+                        <th>Başlık</th>
+                        <th>Fiyatı</th>
+                        <th>Oluşturan</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var item in Model)
+                    {
+                        <tr name="@item.MenuID">
+                            <td> <img style="height:3em; width:3em;" class="mb-3" src="~/images/@item.Image.FileName" alt="@item.Name" /></td>
+                            <td>@item.Name</td>
+                            <td>@item.Price</td>
+                            <td>@item.CreatedBy</td>
+                            <td>@(item.IsDeleted ? "Aktif Değil" : "Aktif")</td>
+                            <td>
+
+                                <a class="btn btn-info btn-sm" data-id="@item.MenuID" asp-controller="Menu" asp-action="UndoDelete" asp-route-menuId="@item.MenuID">Geri Al<i class="bx bxs-edit"></i></a>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts{
+    <script src="~/js/portfolioIndex.js" type="application/ecmascript"></script>
+}

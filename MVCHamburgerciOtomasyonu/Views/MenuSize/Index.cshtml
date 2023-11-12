@@ -1,0 +1,51 @@
+﻿@model List<MenuSizeDto>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Menü Boyutu Yönetimi /</span> Menü Boyut
+    </h4>
+
+
+    <div class="card">
+        <div class="table-responsive text-nowrap m-5">
+
+            <a class="btn btn-success mb-3" asp-controller="MenuSize" asp-action="Add">
+                Menü Boyut Ekle <i class="bx bx-plus"></i>
+            </a>
+
+            <table class="table table-bordered" id="portfoliosTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Başlık</th>
+                        <th>Fiyatı</th>
+                        <th>Oluşturan</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+
+
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var item in Model)
+                    {
+                        <tr name="@item.MenuSizeID">
+                            <td>@item.SizeName</td>
+                            <td>@item.PriceModifier</td>
+                            <td>@item.CreatedBy</td>
+                            <td>@(item.IsDeleted ? "Aktif Değil" : "Aktif")</td>
+                            <td>
+
+                                <a class="btn btn-primary btn-sm" data-id="@item.MenuSizeID" asp-controller="MenuSize" asp-action="Update" asp-route-menuSizeId="@item.MenuSizeID">Güncelle<i class="bx bxs-edit"></i></a>
+
+                                <a class="btn btn-danger btn-sm" data-id="@item.MenuSizeID" asp-controller="MenuSize" asp-action="Delete" asp-route-menuSizeId="@item.MenuSizeID">Sil<i class="bx bx-minus-circle"></i></a>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+

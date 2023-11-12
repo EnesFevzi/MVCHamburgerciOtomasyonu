@@ -1,0 +1,466 @@
+﻿
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="row">
+            <div class="col-lg-8 mb-4 order-0">
+                <div class="card">
+                    <div class="d-flex align-items-end row">
+                        <div class="col-sm-7">
+                            <div class="card-body">
+                                @await Component.InvokeAsync("DashboardBody")
+                                @await Component.InvokeAsync("DashboardWeather")
+                            </div>
+                        </div>
+                        <div class="col-sm-5 text-center text-sm-left">
+                            <div class="card-body pb-0 px-0 px-md-4">
+                                <img src="~/sneat/assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 order-1">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+
+                                    <i style="height:30px; font-size:2.25rem" class="menu-icon bx bx-paper-plane"></i>
+                                </div>
+                                <span class="fw-semibold d-block mb-1">Toplam <br /> Sipariş Sayısı</span>
+                                <h3 class="card-title mb-2" id="totalUserOrderCount" data-url="@Url.Action("TotalUserOrderCounts", "Dashboard")"></h3>
+                                <small class="text-success fw-semibold"></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <i style="height:30px; font-size:2.25rem" class="menu-icon bx bx-category"></i>
+                                </div>
+                                <span class="fw-semibold d-block mb-1">Toplam Teslim Edilen <br /> Sipariş Sayısı</span>
+                                <h3 class="card-title text-nowrap mb-1" id="totalUserOrderCompletedCount" data-url="@Url.Action("TotalUserOrderCompletedCounts", "Dashboard")"></h3>
+                                <small class="text-success fw-semibold"></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Total Revenue -->
+            <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+                <div class="card">
+                    <div class="row row-bordered g-0">
+                        <div class="col-md-12">
+                            <h5 class="card-header m-0 me-2 pb-3">@DateTime.Now.Year Yılının Sipariş Analizi</h5>
+                            <div id="customTotalRevenueChart2" data-url="@Url.Action("YearlyUserOrderCounts", "Dashboard")" class="px-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ Total Revenue -->
+            <div class="col-24 col-md-8 col-lg-4 order-3 order-md-2">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                            <i style="height:30px; font-size:2.25rem" class="menu-icon bx bx-user-circle"></i>
+                            </div>
+                            <span class="fw-semibold d-block mb-1">Toplam İptal Edilen <br /> Sipariş Sayısı</span>
+                                <h3 class="card-title text-nowrap mb-1" id="totalUserOrderCancelCount" data-url="@Url.Action("TotalUserOrderCancelCounts", "Dashboard")"></h3>
+                            <small class="text-success fw-semibold"></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-6 mb-4">
+                        <div class="card">
+                            @* <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                            <i style="height:30px; font-size:2.25rem" class="menu-icon bx bx-captions"></i>
+                            </div>
+                            <span class="fw-semibold d-block mb-1">Toplam  <br /> Eğitim Sayısı</span>
+                            <h3 class="card-title text-nowrap mb-1" id="toplamEğitimSayisi" data-url="@Url.Action("TotalEducationCounts", "Dashboard")"></h3>
+                            <small class="text-success fw-semibold"></small>
+                            </div> *@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Order Statistics -->
+        <div class="col-md-6 col-lg-4 order-1 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                </div>
+                <div class="card-body px-0">
+                    <div class="tab-content p-0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Order Statistics -->
+        <!-- Expense Overview -->
+        <div class="col-md-6 col-lg-4 order-1 mb-4">
+            <div class="card h-100">
+                <div class="card-header">
+                </div>
+                <div class="card-body px-0">
+                    <div class="tab-content p-0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Expense Overview -->
+        <!-- Transactions -->
+        <div class="col-md-6 col-lg-4 order-2 mb-4">
+            <div class="card h-100">
+
+                <div class="card-body">
+                    <ul class="p-0 m-0">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/ Transactions -->
+    </div>
+</div>
+
+
+<div class="content-backdrop fade"></div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        var toplam = $("#totalUserOrderCount").data("url");
+        $.ajax({
+            type: "GET",
+            url: toplam,
+            dataType: "json",
+            success: function (data) {
+                $("#totalUserOrderCount").append(data);
+            },
+            error: function () {
+                toastr.error("Menü Boyutu Sayısı yüklenirken hata oluştu", "Hata");
+            }
+        });
+        var toplam = $("#totalUserOrderCompletedCount").data("url");
+        $.ajax({
+            type: "GET",
+            url: toplam,
+            dataType: "json",
+            success: function (data) {
+                $("#totalUserOrderCompletedCount").append(data);
+            },
+            error: function () {
+                toastr.error("Menü Boyutu Sayısı yüklenirken hata oluştu", "Hata");
+            }
+        });
+        var toplam = $("#totalUserOrderCancelCount").data("url");
+        $.ajax({
+            type: "GET",
+            url: toplam,
+            dataType: "json",
+            success: function (data) {
+                $("#totalUserOrderCancelCount").append(data);
+            },
+            error: function () {
+                toastr.error("Menü Boyutu Sayısı yüklenirken hata oluştu", "Hata");
+            }
+        });
+       
+        
+
+        var yearlyUserOrdersUrl = $("#customTotalRevenueChart2").data("url");
+        $.ajax({
+            type: "GET",
+            url: yearlyUserOrdersUrl,
+            dataType: "json",
+            success: function (data) {
+                var parsedData = JSON.parse(data);
+                chartData = parsedData;
+
+
+                let cardColor, headingColor, axisColor, shadeColor, borderColor;
+
+                cardColor = config.colors.white;
+                headingColor = config.colors.headingColor;
+                axisColor = config.colors.axisColor;
+                borderColor = config.colors.borderColor;
+
+                // Total Revenue Report Chart - Bar Chart
+                // --------------------------------------------------------------------
+                const totalRevenueChartEl = document.querySelector('#customTotalRevenueChart2'),
+                    totalRevenueChartOptions = {
+                        series: [
+                            {
+                                data: chartData
+                            }
+                        ],
+                        chart: {
+                            height: 300,
+                            stacked: true,
+                            type: 'bar',
+                            toolbar: { show: false }
+                        },
+                        plotOptions: {
+                            bar: {
+                                horizontal: false,
+                                columnWidth: '53%',
+                                borderRadius: 12,
+                                startingShape: 'rounded',
+                                endingShape: 'rounded'
+                            }
+                        },
+                        colors: [config.colors.primary, config.colors.info],
+                        dataLabels: {
+                            enabled: false
+                        },
+                        stroke: {
+                            curve: 'smooth',
+                            width: 6,
+                            lineCap: 'round',
+                            colors: [cardColor]
+                        },
+                        legend: {
+                            show: true,
+                            horizontalAlign: 'left',
+                            position: 'top',
+                            markers: {
+                                height: 8,
+                                width: 8,
+                                radius: 12,
+                                offsetX: -3
+                            },
+                            labels: {
+                                colors: axisColor
+                            },
+                            itemMargin: {
+                                horizontal: 10
+                            }
+                        },
+                        grid: {
+                            borderColor: borderColor,
+                            padding: {
+                                top: 0,
+                                bottom: -8,
+                                left: 20,
+                                right: 20
+                            }
+                        },
+                        xaxis: {
+                            categories: ['Ocak', 'Subat', 'Mart', 'Nisan', 'Mayis', 'Haziran', 'Temmuz', 'Agustos', 'Eylul', 'Ekim', 'Kasim', 'Aralik'],
+                            labels: {
+                                style: {
+                                    fontSize: '13px',
+                                    colors: axisColor
+                                }
+                            },
+                            axisTicks: {
+                                show: false
+                            },
+                            axisBorder: {
+                                show: false
+                            }
+                        },
+                        yaxis: {
+                            labels: {
+                                style: {
+                                    fontSize: '13px',
+                                    colors: axisColor
+                                }
+                            }
+                        },
+                        responsive: [
+                            {
+                                breakpoint: 1700,
+                                options: {
+                                    plotOptions: {
+                                        bar: {
+                                            borderRadius: 10,
+                                            columnWidth: '52%'
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                breakpoint: 1580,
+                                options: {
+                                    plotOptions: {
+                                        bar: {
+                                            borderRadius: 10,
+                                            columnWidth: '55%'
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                breakpoint: 1440,
+                                options: {
+                                    plotOptions: {
+                                        bar: {
+                                            borderRadius: 10,
+                                            columnWidth: '52%'
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                breakpoint: 1300,
+                                options: {
+                                    plotOptions: {
+                                        bar: {
+                                            borderRadius: 10,
+                                            columnWidth: '68%'
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                breakpoint: 1200,
+                                options: {
+                                    plotOptions: {
+                                        bar: {
+                                            borderRadius: 10,
+                                            columnWidth: '60%'
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                breakpoint: 1040,
+                                options: {
+                                    plotOptions: {
+                                        bar: {
+                                            borderRadius: 11,
+                                            columnWidth: '68%'
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                breakpoint: 991,
+                                options: {
+                                    plotOptions: {
+                                        bar: {
+                                            borderRadius: 10,
+                                            columnWidth: '50%'
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                breakpoint: 840,
+                                options: {
+                                    plotOptions: {
+                                        bar: {
+                                            borderRadius: 10,
+                                            columnWidth: '55%'
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                breakpoint: 768,
+                                options: {
+                                    plotOptions: {
+                                        bar: {
+                                            borderRadius: 10,
+                                            columnWidth: '48%'
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                breakpoint: 640,
+                                options: {
+                                    plotOptions: {
+                                        bar: {
+                                            borderRadius: 10,
+                                            columnWidth: '52%'
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                breakpoint: 576,
+                                options: {
+                                    plotOptions: {
+                                        bar: {
+                                            borderRadius: 10,
+                                            columnWidth: '57%'
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                breakpoint: 480,
+                                options: {
+                                    plotOptions: {
+                                        bar: {
+                                            borderRadius: 10,
+                                            columnWidth: '65%'
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                breakpoint: 420,
+                                options: {
+                                    plotOptions: {
+                                        bar: {
+                                            borderRadius: 10,
+                                            columnWidth: '72%'
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                breakpoint: 380,
+                                options: {
+                                    plotOptions: {
+                                        bar: {
+                                            borderRadius: 10,
+                                            columnWidth: '80%'
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        states: {
+                            hover: {
+                                filter: {
+                                    type: 'none'
+                                }
+                            },
+                            active: {
+                                filter: {
+                                    type: 'none'
+                                }
+                            }
+                        }
+                    };
+                if (typeof totalRevenueChartEl !== undefined && totalRevenueChartEl !== null) {
+                    const totalRevenueChart = new ApexCharts(totalRevenueChartEl, totalRevenueChartOptions);
+                    totalRevenueChart.render();
+                }
+            }
+
+        });
+    });
+</script>
+
+
+
+
+
+
+
+

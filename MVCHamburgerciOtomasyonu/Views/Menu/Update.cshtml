@@ -1,0 +1,55 @@
+﻿@model MenuUpdateDto
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Menü Yönetimi /</span> Menü Gğncelle
+</h4>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <h5 class="card-header"></h5>
+            <form asp-controller="Menu" asp-action="Update" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="card-body">
+                    <input asp-for="MenuID" type="hidden" />
+                    @*  <div class="form-group">
+                    <label asp-for="MenuSizeId">Boyutlar</label>
+                    <a class="btn text-primary float-end" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                    Menü Boyut Ekle <i class="bx bx-plus"></i>
+                    </a>
+                    <select id="menuSizeList" class="form-control" asp-for="MenuSizeId" asp-items="@(new SelectList(Model.MenuSizes,"MenuSizeID","SizeName"))"></select>
+                    <span asp-validation-for="MenuSizeId" class="text-danger"></span>
+                    </div> *@
+                    <div class="form-group">
+                        <label asp-for="Name" id="defaultFormControlInput" class="form-label">Başlık</label>
+                        <input asp-for="Name" type="text" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen başlık giriniz." aria-describedby="defaultFormControlHelp">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" id="defaultFormControlInput" class="form-label">Fiyat</label>
+                        <input asp-for="Price" type="number" class="form-control mb-3" id="defaultFormControlInput" placeholder="Lütfen Fiyat giriniz." aria-describedby="defaultFormControlHelp">
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="Image.FileName" for="defaultFormControlInput" class="form-label d-block">Mevcut Resim</label>
+                            <img style="height:25em; width:25em;" class="mb-3" src="~/images/@Model.Image.FileName" alt="@Model.Name" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="Photo" for="defaultFormControlInput" class="form-label">Resim seçiniz</label>
+                            <input asp-for="Photo" type="file" accept="image/*" class="form-control mb-3" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="Photo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <button type="submit" class="btn btn-primary btn-block">Kaydet</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

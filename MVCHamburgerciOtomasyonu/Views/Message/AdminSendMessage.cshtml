@@ -1,0 +1,55 @@
+﻿@model SendMessageDto
+
+<h4 class="fw-bold py-3 mb-4">
+    <span class="text-muted fw-light">Mesaj Yönetimi /</span> Mesaj Gönder
+</h4>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <h5 class="card-header"></h5>
+            <form asp-controller="Message" asp-action="SendMessage" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="card-body">
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="ReceiverMail" class="form-label">Alıcı Mail</label>
+                        <input asp-for="ReceiverMail" type="text" class="form-control mb-3" id="ReceiverMail" placeholder="Lütfen Alıcı Mail giriniz." aria-describedby="defaultFormControlHelp" readonly>
+                        <span asp-validation-for="ReceiverMail" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Subject" class="form-label">Konu</label>
+                        <select asp-for="Subject" class="form-control mb-3" id="Subject">
+                            <option value="Sipariş İşlemleri">Sipariş İşlemleri</option>
+                            <option value="Hesap İşlemleri">Hesap İşlemleri</option>
+                            <option value="Öneri ve Şikayet">Öneri ve Şikayet</option>
+                            <option value="Diğer">Diğer</option>
+                        </select>
+                        <span asp-validation-for="Subject" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MessageDetails" class="form-label">Mesaj İçeriği</label>
+                        <textarea asp-for="MessageDetails" class="form-control mb-3" id="MessageDetails" placeholder="Lütfen Mesaj İçeriği giriniz." aria-describedby="defaultFormControlHelp"></textarea>
+                        <span asp-validation-for="MessageDetails" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Kaydet</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+   
+</script>

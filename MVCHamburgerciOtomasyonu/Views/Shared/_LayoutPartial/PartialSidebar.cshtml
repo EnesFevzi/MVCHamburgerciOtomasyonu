@@ -1,0 +1,188 @@
+﻿
+<ul class="menu-inner py-1">
+
+
+    @{
+        @if (!User.IsInRole($"{RoleConsts.Superadmin}"))
+        {
+            <li class="menu-item">
+                <a asp-controller="Dashboard" asp-action="UserDashboard" class="menu-link">
+                    <i class='menu-icon bx bxl-product-hunt'></i>
+                    <div data-i18n="Analytics">Ana Sayfa</div>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a asp-controller="Order" asp-action="UserOrder" class="menu-link">
+                    <i class='menu-icon bx bxl-product-hunt'></i>
+                    <div data-i18n="Analytics">Siparişlerim</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a asp-controller="Order" asp-action="Add" class="menu-link">
+                    <i class='menu-icon bx bxl-product-hunt'></i>
+                    <div data-i18n="Analytics">Sipariş Ver</div>
+                </a>
+            </li>
+
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Mesaj Yönetimi</span></li>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bxs-message-dots"></i>
+                    <div data-i18n="Account Settings">Mesaj</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a asp-controller="Message" asp-action="SendMessage" class="menu-link">
+                            <i class='menu-icon bx bxs-chat'></i>
+                            <div data-i18n="Analytics">İletişime Geç</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-controller="Message" asp-action="InBox" class="menu-link">
+                            <i class='menu-icon bx bxs-chat'></i>
+                            <div data-i18n="Analytics">Gelen Mesajlarım</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-controller="Message" asp-action="SendBox" class="menu-link">
+                            <i class='menu-icon bx bxs-chat'></i>
+                            <div data-i18n="Analytics">Gönderilen Mesajlarım</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        }
+
+        @if (!User.IsInRole($"{RoleConsts.User}"))
+        {
+            <li class="menu-item">
+                <a asp-controller="Dashboard" asp-action="Index" class="menu-link">
+                    <i class='menu-icon bx bxl-product-hunt'></i>
+                    <div data-i18n="Analytics">Ana Sayfa</div>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a asp-controller="Order" asp-action="Add" class="menu-link">
+                    <i class='menu-icon bx bxl-product-hunt'></i>
+                    <div data-i18n="Analytics">Sipariş Ver</div>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a asp-action="Index" asp-controller="Menu" class="menu-link">
+                    <i class='menu-icon bx bxs-edit-alt'></i>
+                    <div data-i18n="Analytics">Menü Yönetimi</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a asp-controller="MenuSize" asp-action="Index" class="menu-link">
+                    <i class='menu-icon bx bx-paper-plane'></i>
+                    <div data-i18n="Analytics">Menü Boyutu Yönetimi</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a asp-controller="Extra" asp-action="Index" class="menu-link">
+                    <i class='menu-icon bx bx-category'></i>
+                    <div data-i18n="Analytics">Ekstra Malzeme Yönetimi</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a asp-action="Index" asp-controller="User" class="menu-link">
+                    <i class='menu-icon bx bxs-edit-alt'></i>
+                    <div data-i18n="Analytics">Kullanıcı Yönetimi</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a asp-action="Worker" asp-controller="User" class="menu-link">
+                    <i class='menu-icon bx bxs-edit-alt'></i>
+                    <div data-i18n="Analytics">Çalışan Yönetimi</div>
+                </a>
+            </li>
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">SİPARİŞ YÖNETİMİ</span></li>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-trash"></i>
+                    <div data-i18n="Account Settings">Sipariş</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a asp-action="AdminShowOrdersWithCancel" asp-controller="Order" class="menu-link">
+                            <div data-i18n="Account">İptal Edilen Siparişler</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-action="AdminShowOrdersWithOnRoad" asp-controller="Order" class="menu-link">
+                            <div data-i18n="Notifications">Yolda Olan Siparişler</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-action="AdminShowOrdersWithPreparing" asp-controller="Order" class="menu-link">
+                            <div data-i18n="Notifications">Hazırlanan Siparişler</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-action="AdminShowOrdersWithCompleted" asp-controller="Order" class="menu-link">
+                            <div data-i18n="Notifications">Tamamlanan Siparişler</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Mesaj Yönetimi</span></li>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bxs-message-dots"></i>
+                    <div data-i18n="Account Settings">Mesaj</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a asp-controller="Message" asp-action="SendMessage" class="menu-link">
+                            <i class='menu-icon bx bxs-chat'></i>
+                            <div data-i18n="Analytics">İletişime Geç</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-controller="Message" asp-action="InBox" class="menu-link">
+                            <i class='menu-icon bx bxs-chat'></i>
+                            <div data-i18n="Analytics">Gelen Mesajlarım</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-controller="Message" asp-action="SendBox" class="menu-link">
+                            <i class='menu-icon bx bxs-chat'></i>
+                            <div data-i18n="Analytics">Gönderilen Mesajlarım</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <br />
+            <br />
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">ÇÖP KUTUSU</span></li>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-trash"></i>
+                    <div data-i18n="Account Settings">Silinmiş Öğeler</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a asp-action="DeletedMenu" asp-controller="Menu" class="menu-link">
+                            <div data-i18n="Account">Menü</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-action="DeletedMenuSize" asp-controller="MenuSize" class="menu-link">
+                            <div data-i18n="Notifications">Menü Boyutu</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a asp-action="DeletedExtra" asp-controller="Extra" class="menu-link">
+                            <div data-i18n="Notifications">Ekstra</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        }
+    }
+    <!-- Dashboard -->
+</ul>
