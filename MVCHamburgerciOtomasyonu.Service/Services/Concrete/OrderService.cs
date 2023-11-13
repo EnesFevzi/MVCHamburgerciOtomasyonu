@@ -262,6 +262,11 @@ namespace MVCHamburgerciOtomasyonu.Service.Services.Concrete
             return map;
         }
 
-
+        public async Task<List<OrderDto>> GetCameOrdersNonDeletedAsync()
+        {
+            var menus = await _orderRepository.GetAllAsync(x => !x.IsDeleted && x.Status == "Sipariş Alındı", x => x.User, x => x.MenuSize, x => x.Menu, x => x.Extras);
+            var map = _mapper.Map<List<OrderDto>>(menus);
+            return map;
+        }
     }
 }

@@ -24,5 +24,6 @@ namespace MVCHamburgerciOtomasyonu.Service.Services.Abstract
         Task<List<OrderDto>> GetOnRoadOrdersNonDeletedAsync();
         Task<List<OrderDto>> GetPreparingOrdersNonDeletedAsync();
         Task<List<OrderDto>> GetCompletedOrdersNonDeletedAsync();
+        Task<List<OrderDto>> GetCameOrdersNonDeletedAsync();
     }
 }

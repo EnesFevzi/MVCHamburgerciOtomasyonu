@@ -16,6 +16,7 @@
                         <th>Ekstralar</th>
                         <th>Sipariş Tarihi</th>
                         <th>Durum</th>
+                        <th>İşlemler</th>
 
                     </tr>
                 </thead>
@@ -36,7 +37,10 @@
                             </td>
                             <td>@item.CreatedDate.ToShortTimeString()</td>
                             <td>@item.Status</td>
-                            
+                            <td>
+                                <a class="btn btn-info btn-sm" data-id="@item.OrderID" asp-controller="Order" asp-action="UpdateStatusPreparing" asp-route-orderId="@item.OrderID">Hazırlanıyor<i class="bx bx-minus-circle"></i></a>
+                                <a class="btn btn-danger btn-sm" data-id="@item.OrderID" asp-controller="Order" asp-action="UpdateStatusCancel" asp-route-orderId="@item.OrderID">İptal<i class="bx bx-minus-circle"></i></a>
+                            </td>
                         </tr>
                     }
                 </tbody>

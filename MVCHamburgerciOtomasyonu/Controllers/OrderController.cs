@@ -65,6 +65,12 @@ namespace MVCHamburgerciOtomasyonu.Web.Controllers
             var order = await _orderService.GetCompletedOrdersNonDeletedAsync();
             return View(order);
         }
+        [Authorize(Roles = $"{RoleConsts.Superadmin}")]
+        public async Task<IActionResult> AdminShowOrdersWithCame()
+        {
+            var order = await _orderService.GetCameOrdersNonDeletedAsync();
+            return View(order);
+        }
         [HttpGet]
         public async Task<IActionResult> UpdateStatusPreparing(Guid orderId)
         {
